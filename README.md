@@ -1,3 +1,7 @@
+# Tên dự án: DDoSGuard
+
+**Mô tả**: Công cụ giám sát tải CPU của website, tự động kích hoạt WAF captcha khi phát hiện tấn công DDoS.
+
 # Hướng Dẫn Cài Đặt
 
 Thực hiện tuần tự các bước sau:
@@ -5,13 +9,13 @@ Thực hiện tuần tự các bước sau:
 1. Lệnh **git clone**
 
    ```bash
-   git clone <repository_url>
+   git clone git@github.com:ThanhNhax/DDoSGuard.git
    ```
 
 2. Chuyển vào thư mục source
 
    ```bash
-   cd src
+   cd DDoSGuard
    ```
 
 3. Lệnh **cp env**
@@ -22,16 +26,16 @@ Thực hiện tuần tự các bước sau:
 
 4. Lệnh **make build**
 
-   - Thực thi câu lệnh Docker build được định nghĩa trong Makefile (make build). Ví dụ:
+   - Thực thi câu lệnh Docker build được định nghĩa trong Makefile (`make build`). Ví dụ:
 
-   ```bash
-   docker build -t <tên_image>:<tag> -f Dockerfile .
-   ```
+     ```bash
+     docker build -t ddosguard:latest -f Dockerfile .
+     ```
 
 5. Lệnh **make up**
 
    - Thực thi câu lệnh `docker run` sử dụng file `.env` để khởi chạy container. Ví dụ:
 
-   ```bash
-   docker run --env-file .env -d --name <tên_container> <tên_image>:<tag>
-   ```
+     ```bash
+     docker run -d --name ddosguard-container --env-file .env ddosguard:latest
+     ```
